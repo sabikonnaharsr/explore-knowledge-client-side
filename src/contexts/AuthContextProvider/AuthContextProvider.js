@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 
-const AuthContextProvider = () => {
+export const AuthProvider = createContext(); 
+const AuthContextProvider = ({children}) => {
+    const [books, setBooks] = useState([]);
+    const handleCard = (selectedBooks) => {
+      setBooks([...books, selectedBooks])
+
+    }
+   
+const authInfo = {handleCard, books, };
     return (
-        <div>
-            <h1>context</h1>
-        </div>
+       
+          <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
+        
     );
 };
 

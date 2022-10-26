@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const LeftSideNav = () => {
+const LeftSideNav = ({ cd }) => {
+  console.log(cd);
+  // const { title, rating } = cd;
   return (
-    <div>
-      
-    </div>
+    <li>
+      <a
+        href="/"
+        class="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600"
+      >
+        <strong class="font-medium text-white">
+          <NavLink>{cd.name}</NavLink>
+        </strong>
+
+        <p class="mt-1 text-xs font-medium text-gray-300"></p>
+      </a>
+    </li>
   );
 };
 

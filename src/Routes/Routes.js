@@ -55,6 +55,7 @@ export const routes = createBrowserRouter([
         path: "/singleCourse",
         element: <SingleCourse></SingleCourse>,
       },
+      
     ],
   },
 ]);
