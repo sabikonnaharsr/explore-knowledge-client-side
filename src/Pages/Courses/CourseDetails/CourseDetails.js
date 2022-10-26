@@ -1,32 +1,31 @@
 import React from "react";
 import SingleCourse from "../SingleCourse/SingleCourse";
 
-const CourseDetails = () => {
+const CourseDetails = ({ card }) => {
+  const { title, name, image, details, price } = card;
   return (
-    <div className="card w-96 glass mt-10 mb-10">
-      <div></div>
-      <figure>
+    <div>
+      <a href="#" class="group relative block bg-black">
         <img
-          src="https://c4.wallpaperflare.com/wallpaper/252/4/1004/light-bulb-lights-books-wallpaper-preview.jpg"
-          alt="car!"
+          alt="Developer"
+          src={card.image}
+          class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
         />
-      </figure>
-      <div className="card-body bg-slate-900 ">
-        <h2 className="card-title text-cyan-600 text-2xl font-bold">
-          Life hack
-        </h2>
-        <p className="text-start">
-          Education is a process of learning through which we acquire knowledge.
-          It enlightens, empowers, and creates a positive development. Education
-          gives an individual the knowledge and skills to work with virtue. It
-          aids the all-round mental,physical,and intellectual growth and
-          development of an individual.
-        </p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Learn now!</button>
+
+        <div class="relative p-8">
+          <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
+            {card.name}
+          </p>
+
+          <p class="text-2xl font-bold text-white">{card.title}</p>
+
+          <div class="mt-64">
+            <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+              <p class="text-sm text-white">{}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      {/* <SingleCourse></SingleCourse> */}
+      </a>
     </div>
   );
 };

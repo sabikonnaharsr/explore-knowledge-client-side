@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const LeftSideNav = () => {
-    return (
-        <div>
-            <h1>left</h1>
-        </div>
-    );
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default LeftSideNav;
