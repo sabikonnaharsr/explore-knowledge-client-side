@@ -52,8 +52,10 @@ export const routes = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
       },
       {
-        path: "/singleCourse",
+        path: "/singleCourse/:id",
         element: <SingleCourse></SingleCourse>,
+        loader: ({params}) => fetch(`https://router-firebase-assignments-10-server.vercel.app/books/${params.id}`)
+        
       },
       
     ],
