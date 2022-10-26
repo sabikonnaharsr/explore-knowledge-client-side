@@ -11,7 +11,6 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 
 export const routes = createBrowserRouter([
-<<<<<<< HEAD
   {
     path: "/",
     element: <Main></Main>,
@@ -53,54 +52,9 @@ export const routes = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
       },
       {
-        path: ".singleCourse",
+        path: "/singleCourse",
         element: <SingleCourse></SingleCourse>,
       },
     ],
   },
-=======
-    {
-        path: '/',
-        element: <Main></Main>,
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>,
-            },
-            {
-                path: '*',
-                element: <ErrorPage></ErrorPage>
-            },
-            {
-                path: '/signup',
-                element: <SignUp></SignUp>
-            },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-           {
-            path: '/banner',
-            element: <Banner></Banner>
-           },
-           {
-            path: '/blogs',
-            element: <Blogs/>
-           },
-           {
-            path: '/courses',
-            element: <Courses/>
-           },
-           {
-            path: '/courseDetails',
-            element: <CourseDetails></CourseDetails>
-           },
-           {
-            path: '.singleCourse',
-            element: <SingleCourse></SingleCourse>
-           }
-        ]
-        
-    }
->>>>>>> 1b7d394ee1ac25fac349a485be9d8df9b5329579
 ]);
