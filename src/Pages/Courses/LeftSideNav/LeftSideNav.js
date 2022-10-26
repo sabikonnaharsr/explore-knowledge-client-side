@@ -11,7 +11,7 @@ const LeftSideNav = ({ cd }) => {
         class="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600"
       >
         <strong class="font-medium text-white">
-          <NavLink to= '/' >{cd.name}</NavLink>
+          <NavLink to= '/'>{cd.name}</NavLink>
         </strong>
 
         <p class="mt-1 text-xs font-medium text-gray-300"></p>

@@ -28,6 +28,18 @@ const SignUp = () => {
 
                 <div className="form-control">
                   <label className="label">
+                    <span className="label-text">Photo Url</span>
+                  </label>
+                  <input
+                    name="Photo Url"
+                    type="Photo url"
+                    placeholder="photo url"
+                    className="input input-bordered" required
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
                     <span className="label-text">Email</span>
                   </label>
                   <input

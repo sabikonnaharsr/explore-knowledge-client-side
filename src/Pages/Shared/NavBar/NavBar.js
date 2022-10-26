@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { IconName,FaUserCircle } from "react-icons/fa";
 import userEvent from '@testing-library/user-event';
-
+import { AuthContext } from '../contexts/UserContext';
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {user, logOut} = useContext(AuthContext);
+    console.log(user)
+const handleLogOut = () => {
+  logOut()
+  .then(() => {
+  
+  })
+  .catch(error => console.error(error))
+}
     return (
       <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -31,12 +40,24 @@ const NavBar = () => {
   <div className="navbar-center">
     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
   </div>
+  {user?.email && <span>welcome,{user.email}</span>}
+
+
+{
+  user?.email ? 
+     <button onClick={handleLogOut} className="fs-3 font-bold">Log Out</button>
+     : <Link className='btn btn-sm' to='/login'>
+      <button className='btn btn-sm'>Log In</button>
+     </Link>   
+}
+  
+
   <div className="navbar-end">
   <button className="btn btn-ghost btn-circle">
       <div className="indicator">
       <input type="checkbox" className="toggle toggle-md" checked />
       </div>
-    </button>
+  </button>
     <button className="btn btn-ghost btn-circle">
    <Link className='text-4xl rounded'><FaUserCircle></FaUserCircle></Link>
     </button>
