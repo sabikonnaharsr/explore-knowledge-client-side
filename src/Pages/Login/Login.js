@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthProvider } from "../../contexts/AuthContextProvider/AuthContextProvider";
 
@@ -7,6 +7,8 @@ const Login = () => {
   const [error, setError] = useState([]);
   const { logIn } = useContext(AuthProvider);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        navigate("/");
+        navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
           title: "Login Success!",
@@ -73,7 +75,7 @@ const Login = () => {
                 />
                 <label className="label">
                   <Link to="/signup" className="label-text-alt link link-hover">
-                    Already Have an Account.!
+                    Already Have an Account.! <Link to="/signup">Register</Link>
                   </Link>
                 </label>
               </div>

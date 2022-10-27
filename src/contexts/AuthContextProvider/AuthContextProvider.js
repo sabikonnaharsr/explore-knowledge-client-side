@@ -14,6 +14,7 @@ const auth = getAuth(app);
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [books, setBooks] = useState([]);
   const handleCard = (selectedBooks) => {
@@ -44,6 +45,7 @@ const AuthContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("gskjg", currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
@@ -58,6 +60,7 @@ const AuthContextProvider = ({ children }) => {
     createUser,
     handleUpdateProfile,
     logIn,
+    loading,
   };
 
   return (
