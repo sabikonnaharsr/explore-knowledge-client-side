@@ -1,19 +1,68 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import app from "../../firebase/firebase.config";
+export const AuthProvider = createContext();
+const auth = getAuth(app);
 
-export const AuthProvider = createContext(); 
-const AuthContextProvider = ({children}) => {
-    const [books, setBooks] = useState([]);
-    const handleCard = (selectedBooks) => {
-      setBooks([...books, selectedBooks])
+const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState([]);
 
-    }
-   
-const authInfo = {handleCard, books, };
-    return (
-       
-          <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
-        
-    );
+  const [books, setBooks] = useState([]);
+  const handleCard = (selectedBooks) => {
+    setBooks([...books, selectedBooks]);
+  };
+
+  const providerLogin = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const handleUpdateProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
+  const logIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const handleLogOut = () => {
+    return signOut(auth);
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("gskjg", currentUser);
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  const authInfo = {
+    handleCard,
+    books,
+    user,
+    providerLogin,
+    handleLogOut,
+    createUser,
+    handleUpdateProfile,
+    logIn,
+  };
+
+  return (
+    <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
+  );
 };
 
 export default AuthContextProvider;

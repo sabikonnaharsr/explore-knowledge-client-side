@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { IconName,FaUserCircle } from "react-icons/fa";
-import userEvent from '@testing-library/user-event';
-import { AuthContext } from '../contexts/UserContext';
+import { AuthProvider } from '../../../contexts/AuthContextProvider/AuthContextProvider';
+
+// import userEvent from '@testing-library/user-event';
+
 const NavBar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {user, logOut} = useContext(AuthContext);
+    
+    const {user, handleLogOut} = useContext(AuthProvider)
     console.log(user)
-const handleLogOut = () => {
-  logOut()
+const logOut = () => {
+  handleLogOut()
   .then(() => {
   
   })
@@ -25,12 +27,26 @@ const handleLogOut = () => {
         <NavLink className='p-4 text-2xl font-bold'>Explore Knowledge</NavLink>
         <NavLink className='p-4' to= '/'>Homepage</NavLink>
         <NavLink className='p-4' to='/courses'>Courses</NavLink>
-        <NavLink className='p-4'to ='/blogs'>Blogs</NavLink>
+        <NavLink className='p-4' to='/blogs'>Blogs</NavLink>
+
+        {
+          user? <NavLink onClick={logOut}>Log Out</NavLink>
+          :
+          <div>
+               <NavLink className='p-4' to='/login'>Login</NavLink>
+               <NavLink className='p-4' to='/signup'>Sign Up</NavLink>
+          </div>
+        }
+       
+          
+
       
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Homepage</a></li>
         <li><a>Courses</a></li>
         <li><a>Blogs</a></li>
+        <li><Link to ="/login">Login</Link></li>
+        <li><Link to="/signup">Sign Up</Link></li>
       </ul>
     </div>
   </div>
@@ -40,7 +56,7 @@ const handleLogOut = () => {
   <div className="navbar-center">
     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
   </div>
-  {user?.email && <span>welcome,{user.email}</span>}
+  {/* {user?.email && <span>{user.email}</span>}
 
 
 {
@@ -50,7 +66,7 @@ const handleLogOut = () => {
       <button className='btn btn-sm'>Log In</button>
      </Link>   
 }
-  
+   */}
 
   <div className="navbar-end">
   <button className="btn btn-ghost btn-circle">
@@ -59,7 +75,14 @@ const handleLogOut = () => {
       </div>
   </button>
     <button className="btn btn-ghost btn-circle">
-   <Link className='text-4xl rounded'><FaUserCircle></FaUserCircle></Link>
+   
+     {  
+      
+        user?.photoURL ? <img style={{height: '30px'}} className='rounded-lg' src={user.photoURL} alt="" title={user.displayName} /> 
+        : 
+       <Link className='text-4xl rounded'> 
+        <FaUserCircle></FaUserCircle></Link>
+     } 
     </button>
   </div>
 </div>
