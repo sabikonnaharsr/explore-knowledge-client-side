@@ -50,7 +50,7 @@ const NavBar = () => {
       <div></div>
       <div />
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">Explore Knowledge</a>
+        <Link className="btn btn-ghost normal-case text-2xl">Explore Knowledge</Link>
       </div>
       {/* {user?.email && <span>{user.email}</span>}
 
