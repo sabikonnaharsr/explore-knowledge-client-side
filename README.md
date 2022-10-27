@@ -27,7 +27,7 @@
 
 
 <!-- my project server link -->
-## https://router-firebase-assignments-10-server.vercel.app/
+## https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-sabikonnaharsr
 
 
 
@@ -38,4 +38,4 @@
 
 
 <!-- here is github link -->
-## 
+## //github.com/programming-hero-web-course1/b610-learning-platform-client-side-sabikonnaharsr
