@@ -17,13 +17,10 @@ const Header = () => {
               </strong>
             </h1>
 
-            <p class="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+            <p class="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-sm">
               The phrase ‘Knowledge is Power’ generally implies that with
-              knowledge and education the potential of a person increases. The
-              power of knowledge is certainly unmatched. Being well learned and
-              sharing knowledge is widely recognized as the core of increasing
-              one’s influence and gaining respect. One can achieve greatest
-              heights of success in life with the power of knowledge!
+              knowledge and education the potential of a person increases. Being well learned and sharing knowledge is widely recognized as the core of increasing
+              one’s influence and gaining respect. 
             </p>
 
             <div class="mt-8 flex flex-wrap gap-4 text-center">

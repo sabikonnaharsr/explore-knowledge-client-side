@@ -5,9 +5,9 @@
 <!-- About this project -->
 
 ## some details..
-- i am going to talk about of mine project
+- i am going to describe about mine project
 - ### Technologies
-- React , React Bootstrap
+- React , React Tailwind 
 - React Router Dom
 - React Lottie
 - Firebase Authentication

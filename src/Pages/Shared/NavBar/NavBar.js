@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { IconName, FaUserCircle } from "react-icons/fa";
 import { AuthProvider } from "../../../contexts/AuthContextProvider/AuthContextProvider";
 import books from "../../../assets/images/books.png";
-// import userEvent from '@testing-library/user-event';
+import './NavBar.css';
 
 const NavBar = () => {
   const { user, handleLogOut } = useContext(AuthProvider);
@@ -52,7 +52,7 @@ const NavBar = () => {
 
       <div className="navbar-center flex items-center ">
         <img className="rounded-full w-[40px]" src={books} alt="" />
-        <Link className="btn btn-ghost hidden lg:block normal-case text-2xl pt-1">
+        <Link className="btn btn-ghost text-slate-900 text-2xl font-bold hidden lg:block normal-case  pt-1">
           Explore Knowledge
         </Link>
       </div>
@@ -61,14 +61,26 @@ const NavBar = () => {
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
-            <input type="checkbox" className="toggle toggle-md" checked />
+          <label
+              htmlFor="AcceptConditions"
+              className="relative h-8 w-14 cursor-pointer"
+            >
+              <input
+                type="checkbox"
+                id="AcceptConditions"
+                className="peer sr-only"
+              />
+
+              <span className="absolute inset-0 rounded-full bg-gray-900 transition peer-checked:bg-slate-900"></span>
+
+              <span className="absolute inset-0 m-1 h-6 w-6 rounded-full bg-white transition peer-checked:translate-x-6"></span>
+            </label>
           </div>
         </button>
         <button className="btn btn-ghost btn-circle">
           {user?.photoURL ? (
             <img
-              style={{ height: "30px" }}
-              className="rounded-lg"
+              className="rounded-full w-[40px]"
               src={user.photoURL}
               alt=""
               title={user.displayName}
