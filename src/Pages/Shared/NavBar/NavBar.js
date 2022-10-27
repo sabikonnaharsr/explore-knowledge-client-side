@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IconName, FaUserCircle } from "react-icons/fa";
 import { AuthProvider } from "../../../contexts/AuthContextProvider/AuthContextProvider";
-
+import books from "../../../assets/images/books.png";
 // import userEvent from '@testing-library/user-event';
 
 const NavBar = () => {
@@ -49,20 +49,14 @@ const NavBar = () => {
       </div>
       <div></div>
       <div />
-      <div className="navbar-center">
-        <Link className="btn btn-ghost normal-case text-2xl">Explore Knowledge</Link>
+
+      <div className="navbar-center flex items-center ">
+        <img className="rounded-full w-[40px]" src={books} alt="" />
+        <Link className="btn btn-ghost hidden lg:block normal-case text-2xl pt-1">
+          Explore Knowledge
+        </Link>
       </div>
-      {/* {user?.email && <span>{user.email}</span>}
-
-
-{
-  user?.email ? 
-     <button onClick={handleLogOut} className="fs-3 font-bold">Log Out</button>
-     : <Link className='btn btn-sm' to='/login'>
-      <button className='btn btn-sm'>Log In</button>
-     </Link>   
-}
-   */}
+      
 
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

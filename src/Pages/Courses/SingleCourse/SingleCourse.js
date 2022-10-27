@@ -1,26 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 const SingleCourse = () => {
   const bookDetails = useLoaderData();
   console.log(bookDetails);
   const { title, name, description, image, price, rating } = bookDetails[0];
 
-  console.log(bookDetails);
+  const componentRef = useRef();
+  const reactPdfPrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "CourseDetails",
+    onafterprint: () => alert("Print Success"),
+  });
+
   return (
-    <div>
-      <div className="max-w-lg p-4 shadow-md mb-7 mt-6 dark:bg-gray-900 dark:text-gray-100">
-        <div className="flex justify-between pb-4 border-bottom">
-          <div className="flex items-center">
-            
-          </div>
+    <div className="lg:p-20">
+      <div className="lg:w-8/12 w-10/12 mx-auto  shadow-md mb-16 mt-6 lg:p-12">
+        <div className="flex items-center justify-center mb-5">
+          <button
+            className="btn btn-ghost text-white bg-amber-400"
+            onClick={reactPdfPrint}
+          >
+            PDF Download
+          </button>
         </div>
-        <div className="space-y-4">
+
+        <div
+          ref={componentRef}
+          style={{ width: "100%", height: window.innerHeight }}
+          className="space-y-4"
+        >
           <div className="space-y-2">
             <img
               src={image}
               alt=""
-              className="block object-cover object-center w-full  h-full dark:bg-gray-500"
+              className="block object-cover object-center w-1/3 mx-auto  h-full dark:bg-gray-500"
             />
             <div className="flex items-center text-xs">
               <span>Rating:{rating}</span>
@@ -36,7 +51,9 @@ const SingleCourse = () => {
           </div>
 
           <Link to="/checkout">
-            <button className="text-red-600 bg-gray-100 rounded-md p-2 f">Check Out</button>
+            <button className="text-slate-50 bg-rose-600 font-bold mt-5 text-md rounded-md px-4 py-2">
+              Check Out
+            </button>
           </Link>
         </div>
       </div>
