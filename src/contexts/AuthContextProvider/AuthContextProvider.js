@@ -9,7 +9,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+
 export const AuthProvider = createContext();
+
+
 const auth = getAuth(app);
 
 const AuthContextProvider = ({ children }) => {

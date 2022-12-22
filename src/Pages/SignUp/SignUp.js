@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
-// import { FaBeer } from "react-icons/fa";
-
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthProvider } from "../../contexts/AuthContextProvider/AuthContextProvider";
 
+
 const SignUp = () => {
+  const navigate = useNavigate();
   const { createUser, providerLogin, handleUpdateProfile } =
     useContext(AuthProvider);
 
@@ -18,6 +18,7 @@ const SignUp = () => {
     handleUpdateProfile(profile)
       .then((result) => {
         const user = result.user;
+        navigate("/")
         console.log(user);
       })
       .then((error) => console.error("Error", error));
@@ -37,7 +38,7 @@ const SignUp = () => {
         console.log(user);
         updateProfile(name, PhotoURL);
       })
-      .catch((e) => console.e(e));
+      .catch((e) => console.error(e));
   };
 
   const googleProvider = new GoogleAuthProvider();
